@@ -1,7 +1,6 @@
 {
   "name": "seam",
   "description": "Design software before there's a spec: explore it, make it visible, and enforce the invariants you care about. A workflow you enter at any stage — design the product, design the code, or build.",
-  "version": "1.1.0",
   "author": {
     "name": "Sean Au Jong"
   },
