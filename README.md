@@ -4,8 +4,8 @@
   <img src="https://github.com/user-attachments/assets/d9a6cf80-cd43-42dd-b7d9-8e8263b469ee" alt="A clothing seam — the visible, intentional line where two pieces deliberately join" width="520">
 </p>
 
-Most AI coding tools kick in the moment you can write the spec. But the hardest part is
-*before* that — when you don't yet know what you want.
+Most AI coding tools are great once you know what you want. The hard part is everything before
+that — figuring out what's even worth building.
 
 **Seam is a way to design software by exploring, not specifying:**
 
