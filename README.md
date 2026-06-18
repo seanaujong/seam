@@ -3,10 +3,9 @@
 *A way to design software when you don't yet know what you want — explore it, see it, and
 enforce what matters.*
 
-<!-- Seam photo: drag an image of a clothing seam into any GitHub issue/PR comment on this
-repo, copy the generated https://github.com/user-attachments/assets/... URL, and paste it as
-the src below. (That hosts it on GitHub's CDN without committing the binary to the repo.) -->
-![A clothing seam — where two pieces are deliberately joined, the visible, intentional line that gives the whole garment its shape](https://github.com/user-attachments/assets/REPLACE-WITH-UPLOADED-URL)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d9a6cf80-cd43-42dd-b7d9-8e8263b469ee" alt="A clothing seam — the visible, intentional line where two pieces deliberately join" width="520">
+</p>
 
 Most workflows start the moment you can write a spec or a failing test. Seam is about
 everything **before** that — and it carries you through to a build you can trust. In plain
