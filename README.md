@@ -1,28 +1,23 @@
 # Seam
 
-*A way to design software when you don't yet know what you want — explore it, see it, and
-enforce what matters.*
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d9a6cf80-cd43-42dd-b7d9-8e8263b469ee" alt="A clothing seam — the visible, intentional line where two pieces deliberately join" width="520">
 </p>
 
-Most workflows start the moment you can write a spec or a failing test. Seam is about
-everything **before** that — and it carries you through to a build you can trust. In plain
-terms:
+Most AI coding tools kick in the moment you can write the spec. But the hardest part is
+*before* that — when you don't yet know what you want.
 
-- **It's ok to not know what you want — let's explore.** Design is discovery. You don't need a
-  spec to begin; you begin by making something you can react to, and the shape falls out of
-  your reaction.
-- **Pictures are worth a thousand words.** Seam makes thinking *visible* — a mockup, a diagram,
-  a map of the pieces you can point at. You can only correct what you can see.
-- **Make a codebase you can move fast in.** Organize so you can change one part without holding
-  the whole system in your head, and so a feature could be lifted out on its own.
-- **Enforce what you care about.** The few things that must always hold become *guards* — a
-  type, a test, a check the build runs — so a promise the design made can't quietly slip.
-- **Think about your users.** Every decision lands on a real person — the dev using the API you
-  wrote, the user in the product, the stakeholder reading a metric. If you can't name who a
-  choice is for, you haven't finished the thought.
+**Seam is a way to design software by exploring, not specifying:**
+
+- **It's ok to not know what you want** — make something you can react to, and the right shape
+  shows itself.
+- **Pictures > paragraphs** — make the thinking visible, then ask the one question that changes
+  everything: *"how does this feel?"*
+- **Build a codebase you can move fast in** — change one part without holding the whole thing in
+  your head.
+- **Enforce what you care about** — the few things that must always hold become checks the build
+  runs, not hopes.
+- **Think about your users** — every decision lands on a real person, or it's not finished.
 
 ## How it works
 
