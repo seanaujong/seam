@@ -294,6 +294,14 @@ Beyond the system under work, the *method* holds itself to the same rules:
   mechanical ("what does it do") to experiential ("is this right"), which is where taste and
   judgment live. Ask it of a prototype, of a design, of the code you're about to change — and
   answer it in the before/after terms a good PR description uses.
+- **Run toward what breaks.** "How does it feel?" is the generative question; its adversarial
+  twin is *"where does it break?"* A seam or an invariant looks fine until you attack it — so
+  steer the system into the icky, hard, or unknown case on purpose and watch what gives. Make
+  the attack real: pick an input where *wrong* code would give a *different* answer (one where
+  right and wrong agree proves nothing); clear the confounds first so a divergence is
+  attributable, not noise; and watch the guard *fail* when you revert the fix. The bug hides
+  where you're not running — a clean invariant on inputs that never reach the effect is a no-op,
+  not a proof.
 - **Every check lands on a real example, for a named someone.** A catalog item raised in the
   abstract — "watch your source of truth" — changes nothing. When a check fires, Seam names
   the concrete instance in *this* system and who it serves: the dev who could construct an

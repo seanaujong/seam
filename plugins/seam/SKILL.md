@@ -93,6 +93,12 @@ You're here when there's a look or feel to react to — a screen, a flow, an int
   2. its **guard** (a check the build runs — a type, a test, a lint rule), and
   3. a **real example, for a named someone** (the dev who'd hit it, the user it protects, the
      stakeholder who'd ask). An abstract finding is a finding deferred.
+- **Stress the seam — run toward what breaks.** Don't just assert the seam and invariants
+  hold; attack them. Steer into the hard, icky, or unknown case — the edge input, the
+  concurrent path, the migration — and choose one where *wrong* code would visibly differ (an
+  input where right and wrong agree tests nothing). Clear confounds so a break is attributable,
+  and watch each guard fail when reverted. The counterexample you find now is cheap; the one
+  production finds isn't.
 - **Want a recommended architecture?** If the user is building fresh and wants a default to
   adopt, offer [Pure Core](./pure-core.md) or [Vertical Slices](./vertical-slices.md).
   Otherwise stay neutral on architecture.
