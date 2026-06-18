@@ -305,6 +305,11 @@ Beyond the system under work, the *method* holds itself to the same rules:
   makes vivid (the kind in `stories/`). A method whose value the user has *seen* travels with
   them and gets reused. (This is the previous rule aimed at the *method itself*, not just a
   single finding.)
+- **Write the way you design.** The bets apply to prose, not just product: make it visible (a
+  concrete example or a diagram beats an abstract paragraph), lead with the intuition and the
+  before/after *feel*, say the *why* before the *what*, and write for a named reader. An
+  explanation you can't picture is one you haven't finished — the same test as a design you
+  can't draw.
 - **Keep the process thin; the thinking lives in the artifacts.** The methodology is a thin
   pass over the prototype, the picture doc, and the seam map. If the *process* is getting
   complicated, the thinking is in the wrong place.
