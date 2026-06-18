@@ -71,6 +71,16 @@ Seam is a Claude Code plugin — add the marketplace and install, no cloning req
 Claude Code reaches for it on design and exploration work, or you can invoke it by name.
 No Claude Code? The docs stand on their own — start here, then [the method](./plugins/seam/seam.md).
 
+## Use it alongside your build workflow
+
+Seam doesn't replace your test-first or spec-driven setup — it runs *upstream* of it. Use Seam
+to figure out what to build, find the seam, and name the invariants worth guarding; then hand
+off to whatever builds it well — [superpowers](https://github.com/obra/superpowers)' TDD-and-review
+loop, [GSD](https://github.com/open-gsd/gsd-core)'s spec-driven execution, or your own. The
+invariants you name in Seam become the first tests those workflows enforce. They co-install
+cleanly: Seam triggers on the design-and-explore work, your build workflow on the
+implementation.
+
 ## Where to look
 
 - **[plugins/seam/seam.md](./plugins/seam/seam.md)** — the method itself: the bets, the standing checklist, the vocabulary.
