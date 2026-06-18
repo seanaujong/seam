@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "seam",
+  "description": "Seam — a design methodology for the part before there's a spec.",
+  "owner": {
+    "name": "Sean Au Jong"
+  },
+  "plugins": [
+    {
+      "name": "seam",
+      "description": "Design software before there's a spec: explore it, make it visible, and enforce the invariants you care about. A workflow you enter at any stage.",
+      "author": {
+        "name": "Sean Au Jong"
+      },
+      "category": "development",
+      "source": "./plugins/seam",
+      "homepage": "https://github.com/seanaujong/seam"
+    }
+  ]
+}

@@ -67,28 +67,24 @@ matters.
 
 ## Install
 
-Seam is a Claude Code skill, and this whole repo *is* the skill folder (`SKILL.md` plus the
-docs it links to). Clone it where Claude Code looks for skills:
+Seam is a Claude Code plugin — add the marketplace and install, no cloning required:
 
-```bash
-# available in every project
-git clone https://github.com/<you>/seam ~/.claude/skills/seam
-
-# …or scoped to a single project
-git clone https://github.com/<you>/seam .claude/skills/seam
+```
+/plugin marketplace add seanaujong/seam
+/plugin install seam@seam
 ```
 
-Claude Code will reach for it on design and exploration work, or you can ask for it by name.
-No Claude Code? The docs stand on their own — start here, then [seam.md](./seam.md).
+Claude Code reaches for it on design and exploration work, or you can invoke it by name.
+No Claude Code? The docs stand on their own — start here, then [the method](./plugins/seam/seam.md).
 
 ## Where to look
 
-- **[seam.md](./seam.md)** — the method itself: the bets, the standing checklist, the vocabulary.
-- **[SKILL.md](./SKILL.md)** — the same thing as an agent skill (the cues, not the rationale).
-- **[pure-core.md](./pure-core.md)** — one architecture to adopt, if you want a recommended one.
-- **[vertical-slices.md](./vertical-slices.md)** — one way to organize folders so you can move fast.
-- **[examples/typescript.md](./examples/typescript.md)** — the guards as real code.
-- **[stories/](./stories/)** — short field notes on *why* it works.
+- **[plugins/seam/seam.md](./plugins/seam/seam.md)** — the method itself: the bets, the standing checklist, the vocabulary.
+- **[plugins/seam/SKILL.md](./plugins/seam/SKILL.md)** — the same thing as an agent skill (the cues, not the rationale).
+- **[plugins/seam/pure-core.md](./plugins/seam/pure-core.md)** — one architecture to adopt, if you want a recommended one.
+- **[plugins/seam/vertical-slices.md](./plugins/seam/vertical-slices.md)** — one way to organize folders so you can move fast.
+- **[plugins/seam/examples/typescript.md](./plugins/seam/examples/typescript.md)** — the guards as real code.
+- **[plugins/seam/stories/](./plugins/seam/stories/)** — short field notes on *why* it works.
 
 Seam never requires a particular architecture — it meets a codebase where it is. The patterns
 above are offered, not imposed.
