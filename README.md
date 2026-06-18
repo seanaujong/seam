@@ -87,6 +87,7 @@ implementation.
 - **[plugins/seam/SKILL.md](./plugins/seam/SKILL.md)** — the same thing as an agent skill (the cues, not the rationale).
 - **[plugins/seam/pure-core.md](./plugins/seam/pure-core.md)** — one architecture to adopt, if you want a recommended one.
 - **[plugins/seam/vertical-slices.md](./plugins/seam/vertical-slices.md)** — one way to organize folders so you can move fast.
+- **[plugins/seam/production-tax.md](./plugins/seam/production-tax.md)** — a lens for "what would it cost to take this live?"
 - **[plugins/seam/examples/typescript.md](./plugins/seam/examples/typescript.md)** — the guards as real code.
 - **[plugins/seam/stories/](./plugins/seam/stories/)** — short field notes on *why* it works.
 

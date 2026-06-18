@@ -124,5 +124,7 @@ of the deliverable, not a flourish.
 - **[pure-core.md](./pure-core.md)** — one architecture to adopt, if the user wants one.
 - **[vertical-slices.md](./vertical-slices.md)** — one way to organize folders for
   feature-isolation, if the user wants one.
+- **[production-tax.md](./production-tax.md)** — a lens for "what would it cost to take this to
+  production?" — sort each concern by layer × reversibility; anticipate the data-shaped few.
 - **[examples/typescript.md](./examples/typescript.md)** — each guard as real code.
 - **[stories/](./stories/)** — field notes behind the principles.

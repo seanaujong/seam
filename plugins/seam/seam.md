@@ -225,6 +225,8 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
   speculative wrappers; keep each type to a single responsibility — ask "does the center
   actually read this?" before adding a field.
 - Auditable — can you trace *why* from the system's own records?
+- When the reversibility question is specifically *"what would it cost to take this to
+  production?"*, see [Production tax](./production-tax.md) — the same lens, pointed at going live.
 
 ### Working in isolation — can you change one part without holding all of it?
 
