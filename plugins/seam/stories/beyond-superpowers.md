@@ -1,73 +1,83 @@
-# Beyond superpowers and GSD — a story
+# Seam next to superpowers and GSD — a story
 
-> **At a glance.** The motivation behind Seam's bets — especially [*explore before you
-> specify*](../seam.md#the-bets) and [*care about invariants, not ritual*](../seam.md#the-bets).
-> This is the contrast that made Seam worth building: what the strongest structured AI-dev
-> workflows do well, the one phase they all assume away, and why Seam sits *upstream* of them
-> rather than against them. The cautionary, contrastive framing lives *here*, in a story — the
-> guide itself stays positive.
+> **At a glance.** The motivation behind Seam's bets, and an honest place to put the
+> comparison. superpowers and GSD are both excellent, and both do far more than "just build" —
+> each has real idea-exploration, and even visual-mockup, phases. So the difference is *not*
+> that they skip discovery. It's where each one's **center of gravity** sits, and what it asks
+> you to care about. The contrastive framing lives here, in a story; the guide stays positive.
 
-## The disciplined schools
+## Credit where it's due
 
-Two of the strongest AI-dev workflows are deliberately structured, and both are right to be:
+- **superpowers** (obra) is a disciplined methodology shipped as composable skills. It opens
+  with a *mandatory* `brainstorming` step that "explores user intent, requirements and design,"
+  proposes 2–3 approaches, and writes an approved design doc — it even has a visual-mockup
+  companion — then hard-gates into small-task planning and **strict, Iron-Law TDD** ("no
+  production code without a failing test first"), with every change reviewed on two axes. Its
+  center of gravity is **disciplined, verifiable, hands-off execution**.
+- **GSD** ("Get Shit Done") is a context-engineering, spec-driven system. Optional
+  `/gsd-explore` (Socratic ideation), `/gsd-sketch` ("explore design directions through
+  throwaway HTML mockups… 2–3 interactive variants… so I can click around"), and `/gsd-spike`
+  (feasibility) sit in front of a five-phase Discuss → Plan → Execute → Verify → Ship loop, run
+  by fresh-context subagents writing to a committed `.planning/` folder. Its center of gravity
+  is **executing a spec at scale without losing the thread** — beating context-rot through
+  subagent orchestration.
 
-- **superpowers** (obra's Claude Code plugin) — test-first: brainstorm, write the failing
-  test, make it green, refactor. Rigor through *verification*.
-- **GSD** ("Get Shit Done") — a *spec-driven* development system for Claude Code: write a clear
-  spec first, then execute it in organized phases with coordinated subagents (it leans on
-  careful prompt design and context management to get there). Rigor through *structure*.
+Both, in other words, *can* explore, sketch, and react to mockups. Claiming "they jump straight
+to tests and skip figuring out what to build" would simply be false — and worth saying plainly,
+because the honest differences are sharper than the false one.
 
-Both treat AI coding as an engineering discipline rather than ad-hoc prompting — and that's a
-real improvement. Once you know what to build, this is how you build it well: clearly,
-verifiably, in order. **Seam doesn't argue with any of that.** It hands off *to* exactly this
-kind of execution.
+## What's actually different
 
-## The phase they both assume away
+Not "we explore and they don't." Three real things:
 
-Look at where each one *starts*: a failing test (superpowers) or a written spec (GSD). Both
-presume an intent precise enough to write down. That assumption is sound — except at the moment
-it matters most: the start, when you don't yet know what you want and would recognize the right
-shape only by seeing it.
+1. **Center of gravity.** For both, idea-exploration is a *front porch* to an execution engine —
+   and the engine is the point (TDD-and-review discipline for superpowers; context-engineered
+   orchestration for GSD). For Seam, the front porch *is* the house: finding the shape and
+   naming what must hold is the whole method, and execution is what it hands off. GSD says it of
+   itself — it "refines and operationalizes rather than discovers the core product vision." Seam
+   is the part that discovers.
 
-You can't write the spec — or the test — for a design you haven't found yet. Specify too early
-and you've quietly committed to the first shape that was plausible enough to write down. And
-the discipline of producing that spec, or that first failing test, *feels* like rigor — which
-makes it easy to mistake "I have a crisp spec" or "I have a red test" for "I'm building the
-right thing." The ceremony stands in for the discovery it skipped.
+2. **The few invariants you care about, not a blanket ritual.** superpowers wants a failing test
+   before *every* line; GSD wants the spec captured *exhaustively* up front. Both are forms of
+   "write it all down, cover it all." Seam's bet is narrower: name the *few* load-bearing
+   invariants you actually care about and guard those — a test is one mechanism, not a law — and
+   otherwise write the tests that make you confident. Selective enforcement of what matters over
+   uniform ceremony.
 
-That is Seam's bet 1 and bet 3, stated as what goes wrong without them: you can't specify your
-way to a design you haven't explored, and a spec or a test is a *mechanism* — not, by itself,
-evidence you're building the right thing.
+3. **A way of thinking you carry, not a machine you operate.** GSD is ~60 commands, a dozen
+   subagents, and a `.planning/` apparatus; superpowers is a gated pipeline with hooks and
+   orchestrated subagents. That machinery is real value — and real surface area. Seam is
+   deliberately the opposite: a handful of cues and one question ("how does this feel?"), with
+   **cue, don't choreograph** as a rule — no fixed subagent counts, no command surface. If
+   subagent orchestration is the part you care about, GSD is built for it; Seam is the taste you
+   bring *to* whatever you build with.
+
+And one quieter difference: Seam runs as a **neutral diagnostic over a codebase that already
+exists**, imposing no architecture — where these are oriented toward building.
 
 ## Where Seam sits
 
-Seam sits **upstream** of both, and wraps *around* them:
+Seam sits **upstream** and hands off cleanly. Its exploration is wider and more open ("it's ok
+to not know what you want," product and market evidence, not just design intent), and its rigor
+is *selective*. Once the shape is found and the invariants named, dropping into superpowers'
+TDD-and-review discipline, or GSD's context-engineered execution, is exactly the right next
+move — Seam can even *feed* their brainstorm or spec step. What Seam deliberately does **not**
+try to be is the execution harness: the autonomous TDD loop, the context-engineering, the
+verification gates. Those are theirs, and they're good at them.
 
-- It **adds the front** they assume away: explore, make it visible, find the shape by reacting
-  to something concrete — *before* there's a spec or a test to commit to.
-- It **keeps the rigor**, aimed at substance: name the few load-bearing invariants and guard
-  each one. A test is welcome — as one way to guard an invariant, not as the ritual you perform
-  first.
-- It **hands off** to structured execution: once the shape is found and the invariants are
-  named, dropping into a spec-driven, test-backed build — superpowers, GSD, or your own — is
-  exactly right. Seam can even *start* there when the shape is already settled.
-
-### Who focuses on what
+## Who focuses on what
 
 | Concern | Seam | superpowers | GSD |
 |---|---|---|---|
-| Explore before a spec exists | **its core** | — (starts at the test) | — (starts at the spec) |
-| Make the thinking visible — prototypes, diagrams | **yes** | not its job | not its job |
-| Find the shape — *what* to build | **its core** | assumed given | assumed given |
-| Name the load-bearing invariants | **its core** | implied by the tests | captured in the spec |
-| Guard those invariants | yes — a test is one way | **via tests** | via spec + checks |
-| Disciplined, structured *execution* | hands off ↦ | **the TDD loop** | **phases + subagents** |
+| Idea exploration before code | **the whole point** | yes — gated `brainstorming` | yes — optional `/gsd-explore` |
+| Visual mockups to react to | yes — "how does it feel?" | yes — visual companion | yes — `/gsd-sketch` |
+| Product / market sense (users, evidence) | **foregrounded** | design-level only | mostly not |
+| What it enforces | the *few* invariants you care about | a failing test before all code | a fully captured spec |
+| Execution machinery (subagents, context) | hands off ↦ | **autonomous TDD + review** | **context-engineered orchestration** |
+| Architecture imposed | none | none | none |
+| Diagnostic over existing code | **yes** | oriented to building | onboarding → build |
 
-Read top to bottom, the table *is* the thesis: Seam owns the rows above the line — discovery,
-and what must hold — and deliberately **hands the last row off**. The execution discipline is
-the thing superpowers and GSD already do well; Seam's job is to make sure that, by the time you
-reach it, you're executing the right shape with the right invariants named.
-
-So the contrast isn't "rigor versus none" — both schools are rigorous, and Seam keeps their
-rigor. The difference is *when* rigor begins. They start once you can specify; Seam supplies
-the phase that finds what's worth specifying, then gets out of the way.
+Read honestly, the top rows are *not* "us vs —": all three explore, sketch, and react to
+mockups. The real split is the middle and bottom — *what each one enforces*, and *whether the
+heavy execution machinery is the point*. Seam keeps the front wide, the enforcement selective,
+and hands the machinery off.
