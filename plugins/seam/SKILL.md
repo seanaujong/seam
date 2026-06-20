@@ -60,6 +60,9 @@ recommend a rewrite no one asked for.
 
 You're here when there's a look or feel to react to — a screen, a flow, an interaction.
 
+- **State the problem before the options.** Name the need the options serve *before* putting
+  them up, so they're judged on fit, not just polish — the crux is the rubric. (The crux-first
+  move, applied to choices — [story](./stories/lead-with-the-crux.md).)
 - **Make it visible, then ask "how does it feel?"** Produce two or three concrete options the
   user can look at and react to — rendered mockups, a clickable sandbox, a side-by-side
   comparison. A thing on screen, not a paragraph. Then ask the question that unlocks taste:
@@ -80,8 +83,9 @@ You're here when there's a look or feel to react to — a screen, a flow, an int
 ## Design the Code
 
 - **Draw the picture, don't write the essay.** Produce a **seam map** (the general core | the
-  special-case shell | what crosses between them) and a short **picture doc** — a one-page
-  narrative of vision, invariants, and goals as one clean arc. Use the `ascii-diagram` skill
+  special-case shell | what crosses between them) and a short **picture doc** — a one-page,
+  *crux-first* narrative of vision, invariants, and goals as one clean arc (introduce each
+  abstraction by the problem it solves, don't assert it as a conclusion). Use the `ascii-diagram` skill
   (the project's box-diagram renderer) for the map; aligned boxes beat hand-counted ones.
 - **Find the seam.** Where does the general core meet the special-case shell? If you can't
   draw the line, you haven't found the boundary — that's a finding, not a stall.

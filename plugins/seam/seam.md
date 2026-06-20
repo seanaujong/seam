@@ -121,9 +121,10 @@ separate passes with a clean boundary between.
 
 ### Design the Code
 
-- **Output.** A **picture doc** — vision, invariants, and goals narrated as one clean arc —
-  plus a **seam map**: the general core, the special-case shell, and what crosses the
-  boundary between them.
+- **Output.** A **picture doc** — vision, invariants, and goals narrated as one clean,
+  *crux-first* arc (each abstraction introduced by the problem it solves, not asserted as a
+  conclusion) — plus a **seam map**: the general core, the special-case shell, and what crosses
+  the boundary between them.
 - **The work is to walk the standing checklist below**; Design the Code is that walk turned
   into a step. Two falsifiable checks keep it honest rather than a diagram exercise:
   - *If you can't draw the seam, you haven't found the boundary.* Inability to place the
@@ -291,6 +292,12 @@ Beyond the system under work, the *method* holds itself to the same rules:
 
 - **Diverge before you converge.** Explore options as concrete artifacts and hold the choice
   open until the right one shows itself.
+- **State the problem before the options.** Whenever you put alternatives on the table —
+  mockups, approaches, architectures — name the problem they're competing to solve *first*.
+  Options shown without the problem in view get compared on polish or familiarity instead of
+  fit; **the crux is the rubric.** This is *Write the way you design*'s crux-first move applied
+  to choices, not just prose — explaining lands one solution, this ranks several. (Story: [Lead
+  with the crux](./stories/lead-with-the-crux.md).)
 - **Make the feeling a value at a boundary.** "Feels good," "looks right," "this flows" —
   push each until it's something you can point at: a rendered frame, a diagram, a
   walkthrough you can diff. What you can point at, you can correct; what stays abstract, you
@@ -330,9 +337,15 @@ Beyond the system under work, the *method* holds itself to the same rules:
   single finding.)
 - **Write the way you design.** The bets apply to prose, not just product: make it visible (a
   concrete example or a diagram beats an abstract paragraph), lead with the intuition and the
-  before/after *feel*, say the *why* before the *what*, and write for a named reader. An
-  explanation you can't picture is one you haven't finished — the same test as a design you
-  can't draw.
+  before/after *feel*, say the *why* before the *what*, and write for a named reader. The
+  sharpest form of why-before-what is **leading with the crux** — the problem each abstraction
+  solves, stated *before* the abstraction, so the reader re-derives the design instead of
+  memorizing conclusions. "State can lie — how do you build something whose history can't?"
+  beats opening with "we use an event-sourced core"; answer-first prose is the seam asserted up
+  front instead of found — the same drift this method warns against, in words. (Story, with a
+  worked answer-first-vs-crux-first diagram and the OSTEP model behind it: [Lead with the
+  crux](./stories/lead-with-the-crux.md).) An explanation you can't picture is one you haven't
+  finished — the same test as a design you can't draw.
 - **Keep the process thin; the thinking lives in the artifacts.** The methodology is a thin
   pass over the prototype, the picture doc, and the seam map. If the *process* is getting
   complicated, the thinking is in the wrong place.
