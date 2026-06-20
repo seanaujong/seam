@@ -302,7 +302,11 @@ Beyond the system under work, the *method* holds itself to the same rules:
   answer it in the before/after terms a good PR description uses.
 - **Run toward what breaks.** "How does it feel?" is the generative question; its adversarial
   twin is *"where does it break?"* A seam or an invariant looks fine until you attack it — so
-  steer the system into the icky, hard, or unknown case on purpose and watch what gives. This is
+  steer the system into the icky, hard, or unknown case on purpose and watch what gives. Two
+  engines feed this: *invent* the adversarial input where wrong code differs — and, just as
+  importantly, **use the system for real**. Ambitious genuine use surfaces the hard cases a real
+  user actually hits, pre-validated as "for a named someone," where invented edge cases may not
+  matter; the two find different classes, so keep both — real use is the engine teams skip. This is
   also the active half of *Start concrete; earn each abstraction* in the standing checklist: the
   brake says *when* to abstract, this says go *find* the case that forces it. Reaching for the
   brake without recently running at a hard case is restraint used as an alibi. Make
