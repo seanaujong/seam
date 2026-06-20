@@ -32,14 +32,17 @@ first](./stories/explore-outside-first.md).)
 rendered screen, a diagram, a comparison, a seam map — not prose you take on faith. You can
 only correct what you can react to, and an abstract intention gives you nothing to react to.
 This is why even "design the code" produces a picture, not an essay: a thing on screen draws
-out the disagreement that a paragraph hides.
+out the disagreement that a paragraph hides. The test: if what you're reacting to is a
+paragraph, you haven't made it visible yet — render the artifact.
 
 **3. Care about invariants, not ritual.** The discipline that matters isn't writing tests up
 front; it's caring about the **invariants** — the few things that must always hold — along
 with the shape, the seam, and the people it serves. A test is a *mechanism*, one way to guard
 an invariant — the invariant is the thing you care about. So strictness is aimed at substance,
 and it comes *after* exploration: explore loosely to find the shape and what must hold, then be
-strict about guarding what you found. (How, in [On tests](#on-tests); why, as a story, in
+strict about guarding what you found. The actionable form: for each invariant the design leans
+on, name the check — a type, a test, a lint rule — that fails when it breaks, or say plainly
+it's only hoped for. (How, in [On tests](#on-tests); why, as a story, in
 [Beyond superpowers](./stories/beyond-superpowers.md).)
 
 ## Why "Seam"
@@ -206,8 +209,9 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
 
 ### Clarity & naming
 
-- Judge each piece by how clearly it shows its central idea; the happy path should read
-  simply, without apology.
+- Say each piece's one idea in a sentence before you write it; if the structure doesn't make
+  that idea visible, the structure is wrong — not the comment. (Can't name a single idea? The
+  piece is doing two things — split it.) The happy path should read simply, without apology.
 - Name the concept, not the implementation; one name per concept (an overloaded name is two
   concepts wearing one); domain words, no invented jargon.
 - Failure modes visible, not silent. No duplicated logic.

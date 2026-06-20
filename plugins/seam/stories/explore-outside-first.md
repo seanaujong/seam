@@ -49,7 +49,9 @@ that produces improvement.
 ## The general lesson
 
 - **Premature conformance is premature commitment.** Standards, conventions, and the
-  surrounding system are constraints to honor *after* discovery, not anchors to design from.
+  surrounding system are constraints to honor *after* discovery, not anchors to design from. The
+  tell: if you catch yourself asking *"what fits what we already have?"* instead of *"what would
+  actually be good here?"*, you've conformed too early.
 - **Distance is a tool.** Deliberately exploring away from the existing thing — a separate
   sandbox, a fresh context that doesn't know the conventions — is how you avoid anchoring.
 - **Don't streamline away the divergence.** The step that feels like wasted, unconsolidated

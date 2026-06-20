@@ -195,11 +195,12 @@ so far" harden into never slicing.
 
 A few practices keep slices and foundation honest as the system grows:
 
-- **Keep the foundation thin.** Only genuine mechanism-for-all and source-of-truth earn a
-  place; for anything else, ask *does this belong to one slice?* and put it there.
-- **Stay one-directional at the boundaries.** A slice receives from the foundation and meets
-  cross-slice needs by composing *upward*, through public surfaces — never by a lateral sibling
-  import.
+- **Before adding anything to the foundation, ask "does this belong to one slice?"** If a
+  single slice could own it, put it there; only a fact every slice reads or a mechanism every
+  slice rides earns a foundation spot.
+- **Point every cross-slice need upward, never sideways.** A slice receives from the foundation
+  and composes *upward* through public surfaces; in review, flag any import where a slice names a
+  sibling slice — the import-boundary linter above is the falsifier.
 - **Keep verification at the edge and rules in the slice.** The foundation verifies and carries
   (transport, identity); each slice owns its own feature rules.
 - **Pick one primary axis.** Group by feature *or* by layer, consistently, so a reader can

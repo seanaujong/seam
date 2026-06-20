@@ -13,9 +13,9 @@
 - Greenfield, or a piece you own end to end and could rebuild.
 - The logic is worth testing in isolation and replaying — a rules engine, a state machine, a
   domain model with real invariants.
-- **Don't bolt it onto a system that already has its own shape.** If you're working inside
-  existing code, use Seam to think through *that* system as it is; don't reach for this as a
-  rewrite you didn't need.
+- **Don't bolt it onto a system that already has its own shape.** The test: could you rebuild
+  this piece end to end? If no, you don't own it — use Seam to think through *that* system as it
+  is; don't reach for this as a rewrite you didn't need.
 
 ## The shape
 

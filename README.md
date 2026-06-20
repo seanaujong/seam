@@ -17,7 +17,8 @@ that — figuring out what's even worth building.
   your head.
 - **Enforce what you care about** — the few things that must always hold become checks the build
   runs, not hopes.
-- **Think about your users** — every decision lands on a real person, or it's not finished.
+- **Name the user each decision lands on** — tie every choice to a real person before you call
+  it finished.
 
 ## How it works
 
