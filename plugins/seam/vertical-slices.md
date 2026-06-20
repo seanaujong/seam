@@ -188,7 +188,8 @@ Reach for it once a system has more than one real feature and changes start spre
 layer-folders, or when you want features independently ownable, testable, and removable. Don't
 slice prematurely: a one-feature app has no domain worth separating, and imposing the full
 vocabulary adds ceremony before it earns its keep. Start concrete; slice when a *second* real
-feature pushes you to.
+feature pushes you to — and notice the push when it comes, rather than letting "only one feature
+so far" harden into never slicing.
 
 ## Keeping the boundaries healthy
 

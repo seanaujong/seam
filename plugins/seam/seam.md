@@ -221,9 +221,15 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
 - Extend by adding (open/closed): a new capability is new code (a new variant, a new
   handler, a new service) plus wiring, not a rewrite of what's there. If adding a feature
   means editing the center, something is layered wrong.
-- Start concrete; earn each abstraction against a real second use (rule of three). No
-  speculative wrappers; keep each type to a single responsibility — ask "does the center
-  actually read this?" before adding a field.
+- Start concrete; earn each abstraction against a real second use (rule of three) — but go
+  *find* that use. This brake has an active twin in *Run toward what breaks* below: the hard
+  case is what *earns* the abstraction, so steer into it on purpose to learn whether the
+  abstraction is due now, rather than waiting for a case to arrive. The two are one loop, not
+  opposites — without the probe the brake decays into "never abstract." No speculative wrappers;
+  keep each type to a single responsibility — ask "does the center actually read this?" before
+  adding a field. *Tripwire:* invoking "don't abstract prematurely" without having recently
+  steered into a hard case is restraint used as an alibi — "I haven't hit the case" is not
+  "it's premature."
 - Auditable — can you trace *why* from the system's own records?
 - When the reversibility question is specifically *"what would it cost to take this to
   production?"*, see [Production tax](./production-tax.md) — the same lens, pointed at going live.
@@ -296,7 +302,10 @@ Beyond the system under work, the *method* holds itself to the same rules:
   answer it in the before/after terms a good PR description uses.
 - **Run toward what breaks.** "How does it feel?" is the generative question; its adversarial
   twin is *"where does it break?"* A seam or an invariant looks fine until you attack it — so
-  steer the system into the icky, hard, or unknown case on purpose and watch what gives. Make
+  steer the system into the icky, hard, or unknown case on purpose and watch what gives. This is
+  also the active half of *Start concrete; earn each abstraction* in the standing checklist: the
+  brake says *when* to abstract, this says go *find* the case that forces it. Reaching for the
+  brake without recently running at a hard case is restraint used as an alibi. Make
   the attack real: pick an input where *wrong* code would give a *different* answer (one where
   right and wrong agree proves nothing); clear the confounds first so a divergence is
   attributable, not noise; and watch the guard *fail* when you revert the fix. The bug hides

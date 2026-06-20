@@ -66,8 +66,9 @@ lens fair rather than preachy.
 - **Anticipate the few.** The hard-to-reverse concerns cluster in *data & contract*. Bake those
   in, or at least leave the door open. Missing here is the surgery you'll regret.
 - **Don't pay tax you don't owe.** Most concerns are reversible — do **not** build them
-  speculatively for a prototype that may never ship. Earn each against a real forcing function.
-  Over-built production infrastructure is the inverse failure, and it's just as costly.
+  speculatively for a prototype that may never ship. Earn each against a real forcing function —
+  and go *find* that forcing function rather than assuming none exists; "no real case yet" is not
+  "never build it." Over-built production infrastructure is the inverse failure, and it's just as costly.
 
 ## On an existing system
 
