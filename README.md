@@ -7,18 +7,13 @@
 Most AI coding tools are great once you know what you want. The hard part is everything before
 that — figuring out what's even worth building.
 
-**Seam is a way to design software by exploring, not specifying:**
+**Seam is a way to design software products through exploration. Unlock your inner creativity.**
 
-- **It's ok to not know what you want** — make something you can react to, and the right shape
-  shows itself.
+- **It's ok to not know what you want** — as you explore options, the right shape is revealed.
 - **Pictures > paragraphs** — make the thinking visible, then ask the one question that changes
   everything: *"how does this feel?"*
 - **Build a codebase you can move fast in** — change one part without holding the whole thing in
   your head.
-- **Enforce what you care about** — the few things that must always hold become checks the build
-  runs, not hopes.
-- **Name the user each decision lands on** — tie every choice to a real person before you call
-  it finished.
 
 ## How it works
 
