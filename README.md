@@ -29,7 +29,7 @@ codebase to understand, or a settled plan to build. You won't always start at th
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│  Design the Product                        the felt shell  │
+│ Design the Product                                         │
 │ when there's a look or feel to react to                    │
 │ explore by reacting: rendered prototypes / mockups         │
 │ done when: human points at one — 'this, not that'          │
@@ -37,7 +37,7 @@ codebase to understand, or a settled plan to build. You won't always start at th
                                │   a shape chosen — now design how it works
                                ▼
 ┌────────────────────────────────────────────────────────────┐
-│  Design the Code                       the resolving core  │
+│ Design the Code                                            │
 │ picture doc (vision · invariants · goals, one arc)         │
 │ + seam map (core | shell | what crosses)                   │
 │ done when: implementation could start tomorrow             │
@@ -45,7 +45,7 @@ codebase to understand, or a settled plan to build. You won't always start at th
                                │   seam found + invariants worth guarding named
                                ▼
 ┌────────────────────────────────────────────────────────────┐
-│  Build                                         downstream  │
+│ Build                                                      │
 │ build it; guard the load-bearing invariants                │
 │ + the unit tests that would make you confident             │
 └────────────────────────────────────────────────────────────┘
