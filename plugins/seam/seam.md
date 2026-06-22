@@ -241,7 +241,7 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
 
 ### Working in isolation — can you change one part without holding all of it?
 
-One question from three angles; a "no" on any of them is the architecture talking, not a
+One question from four angles; a "no" on any of them is the architecture talking, not a
 chore to push through.
 
 - **Test ergonomics — the canary.** When you write a test, does it reach the thing under test
@@ -260,6 +260,15 @@ chore to push through.
   feature reaching into another's internals, so slices can't quietly grow into each other.
   (For a concrete pattern — feature-vertical folders with enforced boundaries — see [Vertical
   Slices](./vertical-slices.md).)
+- **Friction is a finding — what was hard to work with?** Push the canary past one unit to a
+  whole flow: can an unattended process — an agent, a CI job — drive it end to end in dev, or
+  does it stall on a human at a UI to click a button or read an email? A person in the loop is
+  just another heavy dependency; if a flow can't run without one, that friction is a finding
+  about a missing dev seam, not a fact about the task. The fix is the canary's own move one
+  level up — catch the human-gated effect as a value at a boundary (a fake inbox with an API, a
+  sandbox) so a program can read and drive it. Prefer that seam to a bypass: skipping the flow
+  exercises a different path than real users hit. *Guard:* a headless, no-human end-to-end test
+  of the *real* flow, in CI. (Story: [Friction is a finding](./stories/friction-is-a-finding.md).)
 
 ### State & effects — what does this actually do?
 
