@@ -259,7 +259,10 @@ chore to push through.
   a slice is findable and changeable on its own. *Guard:* a dependency rule that forbids one
   feature reaching into another's internals, so slices can't quietly grow into each other.
   (For a concrete pattern — feature-vertical folders with enforced boundaries — see [Vertical
-  Slices](./vertical-slices.md).)
+  Slices](./vertical-slices.md).) That same rule is generative, not only defensive: the seal
+  around shared state is exactly what lets a slice be bespoke and hand-tuned inside without fear
+  — freedom scales *with* the strength of the boundary. (Story: [Boundaries buy
+  freedom](./stories/boundaries-buy-freedom.md).)
 - **Friction is a finding — what was hard to work with?** Push the canary past one unit to a
   whole flow: can an unattended process — an agent, a CI job — drive it end to end in dev, or
   does it stall on a human at a UI to click a button or read an email? A person in the loop is
