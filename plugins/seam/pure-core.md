@@ -27,7 +27,9 @@
 - The center **never branches on input kind.** Different inputs flow through one engine via
   pluggable *adapters*; kind-specific behavior (a special renderer, a diff-aware step) is an
   additive layer *outside* the center. If the center needs to know what a special case *is*,
-  the seam drifted.
+  the seam drifted. Keeping the center general isn't only a containment rule — it's what gives
+  the outer layer a *home* to be freely bespoke in, since nothing it does can leak back into the
+  core. (Story: [Boundaries buy freedom](./stories/boundaries-buy-freedom.md).)
 - I/O lives behind thin **ports & adapters** — the center talks to an abstract port; the
   shell supplies the concrete adapter (a real database, a fake one for tests).
 - *Guard:* make the purity boundary a **build failure**, not a convention — an

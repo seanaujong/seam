@@ -220,6 +220,12 @@ the pattern to move toward. And finding *where verticality stops* — drawing th
 slice and the foundation — is the same act as finding any seam: the general base resolves what
 every feature needs; the special-case features live above it.
 
+The boundary this pattern enforces isn't only defensive. The very rule that keeps a slice from
+leaking — narrow public surface, no lateral imports, defer to the domain for shared facts — is
+what lets the slice be bespoke and hand-tuned *inside* without fear: the seal is what buys the
+freedom, so interior license scales *with* the strength of the boundary, not against it. (Story:
+[Boundaries buy freedom](./stories/boundaries-buy-freedom.md).)
+
 ## Lineage — where these ideas come from
 
 - **Vertical Slice Architecture** — Jimmy Bogard: minimize coupling between slices, maximize
