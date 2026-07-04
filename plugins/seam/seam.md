@@ -263,6 +263,15 @@ chore to push through.
   around shared state is exactly what lets a slice be bespoke and hand-tuned inside without fear
   — freedom scales *with* the strength of the boundary. (Story: [Boundaries buy
   freedom](./stories/boundaries-buy-freedom.md).)
+- **A part more than one surface shows.** When a user-visible piece — a job card, a personal-info
+  block — is rendered by *more than one* slice, it can't live in any single slice, yet it isn't
+  foundation either (a user recognizes it; it's neither mechanism nor an authoritative fact). It's
+  a shared *composite*: lift it out of every slice into a shared presentation tier that renders the
+  fact without owning it. Graduate it on the *second* surface, not before — a screen is a cluster
+  of features, so the reusable part is smaller than any one screen. *Guard:* the shared tier holds
+  only composites ≥2 slices render, and no slice reaches into another's private composite. (For the
+  pattern — package-by-component above the foundation — see [Vertical
+  Slices](./vertical-slices.md#where-verticality-also-stops--composites-more-than-one-surface-shows).)
 - **Friction is a finding — what was hard to work with?** Push the canary past one unit to a
   whole flow: can an unattended process — an agent, a CI job — drive it end to end in dev, or
   does it stall on a human at a UI to click a button or read an email? A person in the loop is

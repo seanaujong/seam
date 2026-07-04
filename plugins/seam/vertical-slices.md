@@ -171,6 +171,42 @@ Keep the foundation **thin** — it's the one place legitimately shared by every
 deliberately: only genuine mechanism-for-all and genuine source-of-truth earn a spot here (see
 *Keeping the boundaries healthy*).
 
+## Where verticality also stops — composites more than one surface shows
+
+The foundation test — *user would ask for it → slice; everyone quietly relies on it → foundation*
+— has a blind spot, and it's the one most likely to bite a UI-heavy front end. Some parts a user
+**does** recognize, yet **more than one slice renders them**: a job card on the home feed, in the
+search results, and on the saved list; a personal-info block on both the apply flow and the
+profile screen. Such a part fails the foundation test (a user thinks about it — it isn't
+invisible mechanism, and it isn't an authoritative fact) *and* can't be slice-private (several
+slices show it). It's a **third kind of shared thing: a composite** — package-by-component, sitting
+above the foundation and below the slices' screens.
+
+Why no slice can own it: a **screen is a cluster of features**, not one feature. The search screen
+is search *plus* a job card *plus* an apply button. The reusable unit — the card — is *smaller than
+any one screen* and shared by several, so "feature" is the wrong grain to hold it. Lift it into a
+**shared composite tier** built only from the design system and the *read shape* of the fact it
+displays. Keep the distinctions sharp: it's presentation, not mechanism (unlike platform), and it
+*renders* a fact it does not own (unlike the domain — the domain is still the single writer; the
+composite shows a projection and defers).
+
+- **Graduate on the second surface — not before.** A composite stays inside its slice's own
+  presentation until a *second* surface renders it. The day the second surface needs it, lift
+  *that one composite* into the shared tier — earn it against the real second use (rule of three,
+  minus one), rather than pre-sharing a widget only one screen has ever shown. This is the same
+  "start concrete, slice when a second feature pushes you" discipline, applied one level down to
+  presentation. *Guard:* a check that every composite in the shared tier is rendered by **≥2**
+  slices (a lone-surface composite there is premature — send it back to its slice), and that no
+  slice renders another slice's *private* composite (it must come from the shared tier, or it's a
+  cross-slice import in disguise — the same import-boundary linter that catches sideways imports
+  catches this).
+
+In sean-platform this tier is real and load-bearing: `JobCard` lives once in a shared UI workspace
+and renders — from a single definition — on the home feed, the search results, *and* the
+server-rendered SEO home (three surfaces, three rendering models, zero forks); `PersonalInfo` does
+the same across the apply and profile screens. A contributor adding the card to a new surface adds
+*one dependency*, not a fork — which is the whole return on drawing this boundary.
+
 ## Enforcing the boundaries
 
 A folder convention is a wish until a check fails on violation. From weakest to strongest: a
