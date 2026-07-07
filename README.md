@@ -1,7 +1,9 @@
 # Seam
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d9a6cf80-cd43-42dd-b7d9-8e8263b469ee" alt="A clothing seam — the visible, intentional line where two pieces deliberately join" width="520">
+  <img src="https://github.com/user-attachments/assets/d9a6cf80-cd43-42dd-b7d9-8e8263b469ee" alt="A clothing seam — the visible, intentional line where two pieces deliberately join" height="220">
+  &nbsp;&nbsp;
+  <img src="./assets/seam-shopkeeper.png" alt="Seam, the shopkeeper from Deltarune" height="220">
 </p>
 
 Most AI coding tools are great once you know what you want. The hard part is everything before
