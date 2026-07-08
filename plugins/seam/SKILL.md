@@ -99,7 +99,8 @@ You're here when there's a look or feel to react to — a screen, a flow, an int
   don't impose the optional patterns (see *Meet the codebase where it is*). For each
   load-bearing item, name three things:
   1. the **invariant** (what must hold),
-  2. its **guard** (a check the build runs — a type, a test, a lint rule), and
+  2. its **guard** (a check the build runs — the cheapest mechanism that can enforce it:
+     a type or lint rule → a unit test → a step CI already runs → a new CI step), and
   3. a **real example, for a named someone** (the dev who'd hit it, the user it protects, the
      stakeholder who'd ask). An abstract finding is a finding deferred.
 - **Stress the seam — run toward what breaks.** Don't just assert the seam and invariants

@@ -151,6 +151,14 @@ breakable; those get promoted to a guard (a type, a test, a lint rule) that fail
 when violated. That's the whole discipline: deciding **which** invariants are worth
 guarding, and naming the check for each.
 
+When more than one mechanism could enforce the same invariant, pick the cheapest that can:
+**a type or lint rule → a unit test → a step CI already runs → a new CI step.** The order is
+cost of ownership: a lint rule fires in the editor in milliseconds with no fixture to
+maintain; a unit test needs setup but still runs everywhere for free; extending an existing
+CI step rides infrastructure someone already owns; a brand-new CI step is a machine you now
+operate. Reach down the list only when the cheaper mechanism genuinely can't express the
+invariant — not because the expensive one feels more thorough.
+
 Beyond those guards, write the unit tests that would make *you* confident the code does what
 you think it does — the cases where a green result earns your trust, and where a wrong
 implementation would actually fail (not one that passes whether the code is right or wrong).
@@ -313,7 +321,9 @@ questions bite, name the real instance, and guard it:
 
 **The guards run in order.** Cheapest, earliest-failing checks first: types / schemas →
 boundary & contract checks → unit tests → integration. A structural violation should fail
-before a behavioral test ever runs.
+before a behavioral test ever runs. (This is *run* order — which existing guard fails
+first. Which mechanism to *build* is the cost-of-ownership order in [On
+tests](#on-tests).)
 
 ## Seam applied to itself
 
