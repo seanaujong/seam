@@ -58,7 +58,9 @@ engine in the middle; the **shell** is everything wrapped around it — I/O, fra
   real database in production, a fake one in tests.
 - Prefer the **narrowest port that serves the concern — single-method where possible.** A
   one-method port is the limiting case of a small interface over hidden behavior: cheap to
-  substitute, hard to misuse, and trivially faked.
+  substitute, hard to misuse, and trivially faked. Narrow means *one concern* (one reason to
+  change), not a method quota — a cohesive save/load/delete port is still one concern;
+  single-method is the limiting case, not a rule.
 - *Guard:* the test fake for a port is a lambda (or a one-line stub). If faking it takes
   more, the port is too wide — split it by concern rather than growing the fake.
 
@@ -79,7 +81,8 @@ engine in the middle; the **shell** is everything wrapped around it — I/O, fra
   pass over small units that hold all the interesting logic.** It should read like a table of
   contents: what happens, in what order, and nothing else.
 - If the orchestrator is accumulating branches and special cases, logic is in the wrong
-  place — push it down into the unit that owns it.
+  place — push it down into the unit that owns it. Thin isn't responsibility-free: composing
+  the units *is* the orchestrator's one responsibility.
 - *Guard:* a size/complexity lint on the orchestrator module, so growth there fails the build
   instead of accreting silently.
 

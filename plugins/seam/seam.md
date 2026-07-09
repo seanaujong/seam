@@ -205,13 +205,18 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
 - I/O lives behind thin **ports & adapters**, one per concern (one storage adapter, one API
   adapter); the center depends on the abstract port, the shell supplies the concrete adapter.
   Prefer the *narrowest* port that serves the concern — single-method where possible: a
-  one-method port is cheap to substitute, hard to misuse, and trivially faked. Litmus: if a
+  one-method port is cheap to substitute, hard to misuse, and trivially faked. The unit of
+  the split is the *concern* — one reason to change — not a method quota: a cohesive
+  save/load/delete port is still one concern, and shattering it into method-per-interface
+  scatters one idea across three names. Litmus: if a
   test fake needs more than a lambda (or a one-line stub), the port is too wide — the
   test-ergonomics canary (see *Working in isolation* below), fired at the boundary itself.
 - Orchestration stays trivial. The top-level sequencer — a pipeline, a loop, a fold — is a
   thin pass over small units that hold all the interesting logic; it should read like a table
   of contents, not a chapter. If the orchestrator is accumulating branches and special cases,
-  logic is in the wrong place — push it down into the unit that owns it. *Guard:* a
+  logic is in the wrong place — push it down into the unit that owns it. Thin isn't
+  responsibility-free: composing the units *is* the orchestrator's one responsibility — it
+  changes when the recipe changes, however many parts it touches. *Guard:* a
   size/complexity lint on the orchestrator module, so growth there fails the build instead of
   accreting silently.
 
