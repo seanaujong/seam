@@ -8,8 +8,10 @@
 > recommendation, and it stands entirely on its own. The **event-sourced log** — representing
 > every state change as an event and folding the log into state — is an optional further step
 > that buys audit, replay, and undo at a real ergonomic cost; take it only when those pay
-> rent. Read both as one good set of answers to the questions Seam's checklist asks about
-> state and effects — not as the only right answers.
+> rent — when one of them is a real requirement, not a nice-to-have. Read both as one good
+> set of answers to the questions Seam's checklist asks about state and effects — not as the
+> only right answers. Unfamiliar terms — *fold*, *reducer*, *tombstone* — are defined in the
+> [Vocabulary](#vocabulary) at the end.
 
 ## When to reach for it
 
@@ -26,28 +28,33 @@ see [Whether the log pays rent](#whether-the-log-pays-rent).
 ## The foundation — a pure core behind narrow ports
 
 Everything in this section stands without event sourcing. A plain function core with a
-repository port is a complete, honest version of this architecture — not a stepping stone to
-a fancier one.
+repository port (a storage interface — save this, load that) is a complete, honest version of
+this architecture — not a stepping stone to a fancier one.
 
-### A pure center, dependencies pointing inward
+Three words recur, borrowed from [Why "Seam"](./seam.md#why-seam): the **core** is the pure
+engine in the middle; the **shell** is everything wrapped around it — I/O, framework, UI; the
+**seam** is the line where they meet.
 
-- The center is a **pure function of its inputs**: zero I/O, zero framework — no clock,
+### A pure core, dependencies pointing inward
+
+- The core is a **pure function of its inputs**: zero I/O, zero framework — no clock,
   network, filesystem, UI surface, or globals. Rendering, persistence, CLI, and any future UI depend
-  on the center; the center depends on none of them.
-- The center **never branches on input kind.** Different inputs flow through one engine via
-  pluggable *adapters*; kind-specific behavior (a special renderer, a diff-aware step) is an
-  additive layer *outside* the center. If the center needs to know what a special case *is*,
-  the seam drifted. Keeping the center general isn't only a containment rule — it's what gives
+  on the core; the core depends on none of them.
+- The core **never branches on input kind.** Different inputs flow through one engine via
+  pluggable *adapters* (swappable implementations — see *Narrow ports* below); kind-specific
+  behavior (a special renderer, a diff-aware step) is an
+  additive layer *outside* the core. If the core needs to know what a special case *is*,
+  the seam drifted. Keeping the core general isn't only a containment rule — it's what gives
   the outer layer a *home* to be freely bespoke in, since nothing it does can leak back into the
   core. (Story: [Boundaries buy freedom](./stories/boundaries-buy-freedom.md).)
 - *Guard:* make the purity boundary a **build failure**, not a convention — an
   import/dependency linter, or a module boundary the type checker enforces, that forbids the
-  center from importing anything in the shell.
+  core from importing anything in the shell.
 
 ### Narrow ports, one per concern
 
 - I/O lives behind thin **ports & adapters**, one per concern (one storage port, one API
-  port); the center talks to the abstract port, the shell supplies the concrete adapter — a
+  port); the core talks to the abstract port, the shell supplies the concrete adapter — a
   real database in production, a fake one in tests.
 - Prefer the **narrowest port that serves the concern — single-method where possible.** A
   one-method port is the limiting case of a small interface over hidden behavior: cheap to
@@ -91,7 +98,8 @@ handed.
 
 ### Extend by adding (open/closed)
 
-A new capability is a new variant (a new command, a new renderer, a new event type) plus a
+A new capability is a new variant (a new command, a new renderer — or, once you've taken the
+further step below, a new event type) plus a
 **registry entry** — a lookup that maps each variant to its handler, so the variant registers
 itself instead of forcing an edit to the central flow. Existing code stays untouched, and
 orchestration stays thin because the pipeline just walks the registry.
@@ -107,8 +115,8 @@ complete. The further step changes the representation:
 - A **pure fold** is the whole engine: `reducer(state, event) → state` (current state + one
   event → the next state), or `phase(state, choices) → events` (current state + the choices
   available → the events to apply, which then fold back into state).
-- You get replay, an audit trail, and undo for free, because every intermediate state is a
-  real, inspectable value.
+- You get replay, an audit trail, and undo for free — free once the log's tax below is paid —
+  because every intermediate state is a real, inspectable value.
 - **Deletes are tombstones, not erasure** — append a "deleted" event; never rewrite history.
 
 ### Whether the log pays rent
@@ -121,8 +129,9 @@ Take this step only when one of its payoffs is load-bearing for *this* system:
 
 The log has a real tax: everything must serialize, indirection grows, and every change is now
 read through an extra representation. When none of the payoffs above are load-bearing, the
-foundation alone is the deeper, cheaper boundary — stopping there is the recommended default,
-not a compromise.
+foundation alone is the deeper, cheaper boundary (*deep* in Ousterhout's sense: a small
+interface hiding a lot of behavior) — stopping there is the recommended default, not a
+compromise.
 
 ## How it answers Seam's questions
 
@@ -131,11 +140,12 @@ effects](./seam.md#state--effects--what-does-this-actually-do) checklist.
 
 The **foundation** answers:
 
-- **Side-effect safety?** Effects live in the shell, past the pure center; re-running the
-  center is always safe because it's pure.
+- **Side-effect safety?** Effects live in the shell, past the pure core; re-running the
+  core is always safe because it's pure.
 - **Boundary contracts?** The ports pin exactly what crosses each seam, one concern at a time.
-- **Consistency?** One in-process core is strongly consistent by default; distribution is a
-  shell concern you add deliberately, not an accident in the center.
+- **Consistency?** (Can a read ever be stale?) One in-process core is strongly consistent by
+  default; distribution is a
+  shell concern you add deliberately, not an accident in the core.
 
 The remaining questions are exactly the **rent test** for the log:
 
@@ -143,17 +153,20 @@ The remaining questions are exactly the **rent test** for the log:
   log, singular by construction; nothing else is writable.
 - **Reconstruct why?** Foundation: only if you build an audit trail deliberately. Log: replay
   to any point; the history *is* the explanation.
-- **Multi-step work?** Foundation: recovery is a design task per flow. Log: each step is an
+- **Multi-step work?** (Does a half-finished sequence land somewhere recoverable?)
+  Foundation: recovery is a design task per flow. Log: each step is an
   event; a half-finished sequence is just a prefix of the log, always a valid state.
 
 If the second group of questions bites hard for your system, that's the signal the log pays
 rent. If they don't, the foundation already answered everything that matters.
 
 That tidiness is exactly why the whole doc is only a *suggestion*: it buys its guarantees by
-owning all its state and keeping side effects out of the center. When a system can't do that,
+owning all its state and keeping side effects out of the core. When a system can't do that,
 Seam's neutral questions still apply — this set of answers just won't.
 
 ## Vocabulary
+
+Plain-language definitions of the event-sourcing terms this doc leans on.
 
 - **Pure function / pure fold.** *Pure* means the output depends only on the inputs — no
   hidden state, no side effects, same inputs always give the same result. A *fold* is a
