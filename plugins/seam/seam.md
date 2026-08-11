@@ -204,8 +204,9 @@ for different rungs.)*
 - Dependencies point inward; edges (shells, adapters, renderers) depend on the center, never
   the reverse. Fix a bug in the layer that *owns* the invariant, not the one that surfaces
   it.
-- I/O lives behind thin **ports & adapters**, one per concern (one storage adapter, one API
-  adapter); the center depends on the abstract port, the shell supplies the concrete adapter.
+- I/O — and anything else the center may not reach for — lives behind thin **ports &
+  adapters**, one per concern (one storage adapter, one API adapter); the center depends on
+  the abstract port, the shell supplies the concrete adapter.
   Prefer the *narrowest* port that serves the concern — single-method where possible: a
   one-method port is cheap to substitute, hard to misuse, and trivially faked. The unit of
   the split is the *concern* — one reason to change — not a method quota: a cohesive
@@ -213,6 +214,20 @@ for different rungs.)*
   scatters one idea across three names. Litmus: if a
   test fake needs more than a lambda (or a one-line stub), the port is too wide — the
   test-ergonomics canary (see *Working in isolation* below), fired at the boundary itself.
+- **Relocating code past a boundary IS a boundary decision** — so run this section then, not
+  only when consciously designing a seam. The trigger for a port is not impurity but
+  *unreachability*: when the build-enforced line above stops logic living where its rules
+  belong, the question is who **provides** the missing thing, not where the code should move
+  to sit beside it. The tell is a sentence of the form *"X can't live in the center because it
+  needs Y, so X belongs over there with Y"* — Y is a dependency, and the center can declare a
+  port for it. This bites hardest when Y is itself pure, because then nothing feels like it
+  needs hiding: a pure lookup stranded on the far side of an import linter needs a port
+  exactly as much as a database does. Beware the tiebreaker "this way invents no new
+  interface" — cheapness in concepts is not the goal; which side ends up holding the *rules*
+  is. *Litmus:* can you exercise those rules against a hand-written literal, with no real
+  source constructed? If only the real thing will do, invert — relocate instead and the rules
+  emigrate with the code. And keep what the port returns RAW: an adapter that helpfully
+  pre-filters has taken a rule across the line with it.
 - Orchestration stays trivial. The top-level sequencer — a pipeline, a loop, a fold — is a
   thin pass over small units that hold all the interesting logic; it should read like a table
   of contents, not a chapter. If the orchestrator is accumulating branches and special cases,
