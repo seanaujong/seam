@@ -216,7 +216,9 @@ the practical sweet spot — the concrete rule, in code, is in
 [examples/typescript.md](./examples/typescript.md#working-in-isolation--keep-features-from-reaching-into-each-other));
 **monorepo project boundaries** by tag; and a **language module system** (the strongest —
 the compiler enforces it and it can't be ignored, e.g. package-private visibility or an
-"internal" package rule where only a common ancestor may import the contents).
+"internal" package rule where only a common ancestor may import the contents — Go ships that
+last one in the build tool, shown in
+[examples/go.md](./examples/go.md#working-in-isolation--keep-features-from-reaching-into-each-other)).
 
 ## When to reach for it — and when not
 

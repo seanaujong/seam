@@ -185,7 +185,9 @@ that isn't safe to repeat. Don't sort the system into a *type* ("micro­services
 "legacy"); read what it actually does and pull the questions that bite.
 
 *(New to a term below? There's a plain-language [Vocabulary](#vocabulary) at the bottom. Want
-the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
+the guards as real code? See [examples/](./examples/) — the same checklist worked twice, in
+[TypeScript](./examples/typescript.md) and in [Go](./examples/go.md), two languages that reach
+for different rungs.)*
 
 ### Boundaries & layering — where the seam goes
 
@@ -224,13 +226,23 @@ the guards as real code? See [Seam in TypeScript](./examples/typescript.md).)*
 
 - Can the design represent an illegal state? Prefer a tagged union (a finite set of variants
   each marked by a discriminator) over a bag of optional flags; match it exhaustively, so
-  adding a variant *forces* every consumer to handle it. *Guard:* a type system that can make
-  the missing case a build error.
+  adding a variant *forces* every consumer to handle it.
 - Give distinct types to values that share a representation but shouldn't be interchangeable
-  (two kinds of id), so the type system rejects mixing them.
-- Turn the type checker's strictness up from the start, and treat dynamic or untyped values
-  as something to narrow at the boundary rather than spread inward. Don't retrofit strictness
-  later.
+  (two kinds of id), so passing one where the other belongs is rejected rather than merely
+  discouraged.
+- Turn whatever static checking you have up from the start, and treat dynamic or untyped
+  values as something to narrow at the boundary rather than spread inward. Don't retrofit
+  strictness later.
+- *Guard — use the strongest rung the language actually offers:* the state can't be
+  constructed > it's a build error > a test or lint rule that runs **in CI** > review.
+  **Which rung is available is a property of the language, not a measure of the design.**
+  Languages differ in where they spend: one closes the set of variants for you, another gives
+  distinct types away free but can't check a match is exhaustive, a third guards more at the
+  boundary and less in the type. A codebase that pins its rules with table tests and a CI
+  linter has satisfied this section exactly as well as one that pins them with sealed types.
+  Read a missing mechanism as a different trade, not a missing value — and where a rung is
+  genuinely absent, say which cheaper rung is carrying the invariant instead of assuming none
+  is needed.
 - Is each load-bearing invariant enforced by a type/test/lint rule — or just held in our
   heads?
 
@@ -441,9 +453,10 @@ the pure-core architecture — *fold*, *event sourcing*, *tombstone*, and so on 
 [Pure Core](./pure-core.md).)
 
 - **Tagged union + exhaustiveness check.** A type that is exactly one of a finite set of
-  variants, each marked by a discriminator. Matching *every* variant exhaustively lets the
-  type system reject the code the moment someone adds a variant and forgets to handle it —
-  turning a forgotten case into a build error instead of a runtime surprise.
+  variants, each marked by a discriminator. Matching *every* variant exhaustively turns a
+  forgotten case into a failure at build time instead of a runtime surprise. Some type
+  systems check this for you; where one doesn't, the same guarantee comes from closing the
+  set by convention and adding a test that fails on an unhandled variant.
 - **Distinct types for indistinct values.** Giving two values that share a representation
   (say, two kinds of id) separate types, so the type system refuses to let you pass one where
   the other is expected.
@@ -453,7 +466,8 @@ the pure-core architecture — *fold*, *event sourcing*, *tombstone*, and so on 
 - **Open/closed.** Extend behavior by *adding* new code (a new variant, a new handler), not
   by editing existing code.
 - **Strict type checking.** Turning the type checker's optional safety settings on from the
-  start, so more mistakes surface as build errors instead of runtime bugs.
+  start, so more mistakes surface as build errors instead of runtime bugs. How much this buys
+  varies by language — it's one rung on the guard ladder, not the ladder.
 - **Import / dependency linter.** A check that scans which modules import which and fails the
   build when a forbidden cross-layer dependency appears — one way to make a layering boundary
   an enforced check rather than a convention.

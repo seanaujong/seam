@@ -86,7 +86,9 @@ implementation.
 - **[plugins/seam/pure-core.md](./plugins/seam/pure-core.md)** — one architecture to adopt, if you want a recommended one.
 - **[plugins/seam/vertical-slices.md](./plugins/seam/vertical-slices.md)** — one way to organize folders so you can move fast.
 - **[plugins/seam/production-tax.md](./plugins/seam/production-tax.md)** — a lens for "what would it cost to take this live?"
-- **[plugins/seam/examples/typescript.md](./plugins/seam/examples/typescript.md)** — the guards as real code.
+- **[plugins/seam/examples/](./plugins/seam/examples/)** — the guards as real code, the same
+  checklist worked twice: in [TypeScript](./plugins/seam/examples/typescript.md) and in
+  [Go](./plugins/seam/examples/go.md).
 - **[plugins/seam/stories/](./plugins/seam/stories/)** — short field notes on *why* it works.
 
 Seam never requires a particular architecture — it meets a codebase where it is. The patterns

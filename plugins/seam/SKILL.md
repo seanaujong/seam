@@ -121,7 +121,7 @@ Write the code, add the guards for the invariants worth keeping, and write the u
 that would make you confident it works — the ones where, if they pass, you'd trust it. This
 stage stands on its own: when the shape is already settled, start here — guard the
 load-bearing invariants and skip the rest. For the guards as concrete, pasteable code, see
-[examples/typescript.md](./examples/typescript.md).
+[examples/](./examples/) — [TypeScript](./examples/typescript.md) or [Go](./examples/go.md).
 
 ## The litmus for your output
 
@@ -149,5 +149,6 @@ public](./stories/present-to-the-public.md).)
   feature-isolation, if the user wants one.
 - **[production-tax.md](./production-tax.md)** — a lens for "what would it cost to take this to
   production?" — sort each concern by layer × reversibility; anticipate the data-shaped few.
-- **[examples/typescript.md](./examples/typescript.md)** — each guard as real code.
+- **[examples/](./examples/)** — each guard as real code, in
+  [TypeScript](./examples/typescript.md) and in [Go](./examples/go.md).
 - **[stories/](./stories/)** — field notes behind the principles.
