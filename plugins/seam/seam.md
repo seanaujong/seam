@@ -109,10 +109,8 @@ separate passes with a clean boundary between.
 - **Push product sense here**, not just aesthetics: who is this for, why would it spread,
   what's the market shape. This is the step that exists to counter "build the thing that's
   technically interesting to me" — it forces a reaction from a *user's* point of view. Make that
-  point of view visible: **walk the user's journey** as a flowchart or a numbered walkthrough —
-  the person, their goal, and the path they take (see [Present to the
-  public](./stories/present-to-the-public.md)) — the make-it-visible bet aimed at the *experience*
-  rather than the architecture.
+  point of view visible: **walk the user's journey** — the person, their goal, and the path they
+  take — the make-it-visible bet aimed at the *experience* rather than the architecture.
 - **Ground product calls in evidence — and name the tier.** Taste is a hypothesis, not a
   verdict. Reach for the strongest evidence available, and say which one a claim rests on,
   so a guess isn't mistaken for a fact:
@@ -413,19 +411,17 @@ Beyond the system under work, the *method* holds itself to the same rules:
   **the public on the far side of the seam you touched.** Change the pure core and it's the dev
   who now sees a new failing test; change a projection and it's the analyst querying the table;
   change the shell and it's the end user — often *not* the end user. A change request is a
-  presentation to that public, so **lead with their experience**, not the diff, and walk their
-  journey — a flowchart or a numbered walkthrough of what they go through, before versus after —
-  which is also the artifact a reviewer with no context on your subsystem can actually read. An
-  abstract finding is a finding deferred: ground it or drop it. (Story: [Present to the
-  public](./stories/present-to-the-public.md).)
+  presentation to that public, so **lead with their experience**, not the diff — the artifact a
+  reviewer with no context on your subsystem can actually read. An abstract finding is a finding
+  deferred: ground it or drop it.
 - **Show the why, not just the move.** Suggesting the thinking isn't enough — the output
   should let the user *see why it paid off here*: the bug avoided, the payoff a short story
   makes vivid (the kind in `stories/`). A method whose value the user has *seen* travels with
   them and gets reused. (This is the previous rule aimed at the *method itself*, not just a
   single finding.)
 - **Write the way you design.** The bets apply to prose, not just product: make it visible (a
-  concrete example or a diagram beats an abstract paragraph), lead with the intuition and the
-  before/after *feel*, say the *why* before the *what*, and write for a named reader. The
+  concrete example or a diagram beats an abstract paragraph), lead with the intuition, say the
+  *why* before the *what*, and write for a named reader. The
   sharpest form of why-before-what is **leading with the crux** — the problem each abstraction
   solves, stated *before* the abstraction, so the reader re-derives the design instead of
   memorizing conclusions. "State can lie — how do you build something whose history can't?"

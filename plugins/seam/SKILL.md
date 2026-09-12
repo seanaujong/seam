@@ -75,11 +75,9 @@ You're here when there's a look or feel to react to — a screen, a flow, an int
   purpose. (Story: [stories/explore-outside-first.md](./stories/explore-outside-first.md).)
 - **Think about who it's for, and walk what they go through** — push product sense, not just
   aesthetics: who is this for, why would it spread, what's the shape of the need. Make the
-  *user's journey* visible the way the seam map makes the structure visible: name the person and
-  their goal, then trace the path they take — before versus after, including where it forks or
-  fails — as a **flowchart or a numbered walkthrough** (reach for the `ascii-diagram` skill for a
-  flowchart). It needn't be a formal use case; the discipline is just *name the actor, name the
-  goal, walk the path.* (Story: [Present to the public](./stories/present-to-the-public.md).)
+  *user's journey* visible the way the seam map makes the structure visible: name the person,
+  their goal, and the path they take, including where it forks or fails. (Reach for the
+  `ascii-diagram` skill for a flowchart.)
 - **Ground product calls in evidence, and name the tier:** agent reasoning alone (a
   hypothesis) → agent reasoning + internet research (grounded outside) → existing
   metrics/data (your own users — best when it exists). Don't pass a guess off as a fact.
@@ -130,15 +128,11 @@ helped them — concretely — or does it only tell them to do it?** A change re
 **presentation to the public** — so lead with how the public experiences the change, not the
 mechanical diff. Who's the public? Whoever's on the far side of the seam you touched: a
 downstream dev who now hits a new failing test, an analyst querying your table, an end user in
-the product — often *not* the end user. Name that someone, then **walk their journey** — what
-they go through, **before** versus **after** — as a flowchart or a numbered walkthrough (see
-[Think about who it's for](#design-the-product)). This is the good-PR-description move — the
-intuition and how it *feels*, not just the change — with the affected person put first, so a
+the product — often *not* the end user. Name that someone and put their experience first, so a
 reviewer with no context on your subsystem can still judge it. Name the real person an invariant
 protects, the better version that exploring surfaced — the way the [stories](./stories/) make a
 *why* vivid. A method whose payoff the user has *felt* is one they reach for again. Teaching the
-why is part of the deliverable, not a flourish. (Story: [Present to the
-public](./stories/present-to-the-public.md).)
+why is part of the deliverable, not a flourish.
 
 ## Reference (load on demand)
 
