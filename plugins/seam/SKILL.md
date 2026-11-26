@@ -110,6 +110,8 @@ You're here when there's a look or feel to react to — a screen, a flow, an int
 - **Want a recommended architecture?** If the user is building fresh and wants a default to
   adopt, offer [Pure Core](./pure-core.md) or [Vertical Slices](./vertical-slices.md).
   Otherwise stay neutral on architecture.
+- **Several small bugs piling up?** Rendering/state glitches arriving together are often one
+  law broken N ways — see [When several bugs show up at once](./seam.md#when-several-bugs-show-up-at-once).
 - **Done when** there's a seam map, the invariants named as guards, and a green signal —
   enough that implementation could start tomorrow without re-deriving the design.
 

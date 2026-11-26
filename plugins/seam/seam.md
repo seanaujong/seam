@@ -164,6 +164,30 @@ If you can't name a test that would make you confident, that's the gap to fill. 
 ritualize this; it just insists the load-bearing invariants are guarded, so a promise the
 design made can't quietly rot.
 
+**"Untestable" means the seam isn't found yet.** When something feels untestable — rendering,
+timing, ordering, anything with a clock or a TTY — find where the effect becomes a *value* at
+some boundary (the rendered frame, the bytes written) and assert on that value; once it's a
+value it's an ordinary equality check. The tell is in your own reasoning: "I'll just verify
+manually," "looks right," "hard to test," flicker/jitter/off-by-a-row words. What resists
+testing rots silently, so it most deserves a harness — even when building it has no visible
+payoff.
+
+### When several bugs show up at once
+
+A cluster of rendering, timing, or state glitches is often one bug wearing N faces. Don't patch
+them one by one:
+
+1. **Split by cohesion first.** Separate the tangled unit into pieces named for the concern each
+   owns, with no behavior change. N bugs can't look like one while the logic is interleaved.
+2. **Find the one law.** Ask what *single* thing, if true, would cause every symptom, and resist
+   the quick per-symptom patch.
+3. **Name it and home it.** Make the rule one pure function or predicate in the module that owns
+   it, so inline copies can't drift.
+4. **Guard it.** Write the test, and watch it fail with the fix reverted.
+
+Steps 1 and 2 have no visible payoff and ask for patience exactly when a fast fix is tempting.
+Raise this unprompted once a session starts piling up small rendering/state fixes.
+
 ## The standing checklist
 
 A catalog of things worth *considering*, and the heart of the method. Walk it, decide which
@@ -301,6 +325,11 @@ chore to push through.
   unrelated ground first? Awkward, sprawling setup is a design signal: the seam is in the
   wrong place, or the unit is too coupled to reach on its own. Treat "this test is painful to
   write" as a finding about the structure, not a fact about testing.
+- **Falsify the boundary, don't assert it.** Can one side be tested with the other replaced
+  by a literal? Does the interface leak the hidden side's types? Do both sides keep changing in
+  the same commits (`git log` on the two paths)? Any "yes" to the last two means the boundary
+  is drawn on paper, not in the code. The target is a deep module: a small interface over a lot
+  of hidden behavior.
 - **Add-a-feature walkthrough.** Take a plausible next feature and trace what it would
   actually take. Does it land as a vertical slice — a feature added top to bottom through the
   layers it needs, mostly as new pieces — or does it force edits threaded across many layers
@@ -358,6 +387,12 @@ questions bite, name the real instance, and guard it:
 - **Consistency on purpose.** Where can a read be stale, and does everyone reading it know?
   Strong vs eventual should be a decision, not an accident. *Guard:* the tolerated staleness
   documented and tested.
+
+### Prior art — what is this a version of?
+
+- For a substantial change, name the closest industry analog (a known pattern, library, or
+  system) and say where this design agrees, differs, and deliberately diverges. A divergence
+  you can't name a reason for is probably an accident.
 
 **The guards run in order.** Cheapest, earliest-failing checks first: types / schemas →
 boundary & contract checks → unit tests → integration. A structural violation should fail
